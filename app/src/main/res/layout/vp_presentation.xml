@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable name="VpPresentation" type="com.gibsoncodes.newsapp.model.ViewPagerPresentation"/>
+    </data>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        app:cardUseCompatPadding="true"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="8dp"
+        android:background="@android:color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardElevation="4dp"
+        android:layout_height="match_parent">
+        <RelativeLayout android:layout_width="match_parent"
+            android:background="@android:color/white"
+            android:layout_height="500dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/category"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:text="@{VpPresentation.category}"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_below="@id/category"
+                android:text="@{VpPresentation.categoryText}"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:id="@+id/categoryText"
+                android:textColor="@android:color/black"/>
+            <com.airbnb.lottie.LottieAnimationView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:lottie_loop="true"
+                android:layout_below="@id/categoryText"
+                android:layout_marginTop="4dp"
+                android:id="@+id/lottieAnimation"
+                app:lottie_autoPlay="true"/>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

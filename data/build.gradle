@@ -1,0 +1,25 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api dataDependencies.retrofit
+    api dataDependencies.loggingInterceptor
+    api dataDependencies.googleGson
+    api dataDependencies.urlConnection
+    api dataDependencies.coroutinesCore
+    api dataDependencies.coutinesAndroid
+    api dataDependencies.okHttp
+    api dataDependencies.retrofitConverter
+    api dataDependencies.timber
+
+    testImplementation testDependencies.junit
+
+}

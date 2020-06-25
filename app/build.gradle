@@ -1,0 +1,109 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.gibsoncodes.newsapp"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildTypes {
+        debug {
+            try {
+                minifyEnabled false
+                buildConfigField "String", "API_URL", "\"https://newsapi.org/v2/\""
+                buildConfigField "String", "API_KEY", newsapi_key
+                debuggable true
+            } catch (e) {
+                // add your api key in gradle.properties file with the following property
+                // newsapi_key = " key"
+                throw e
+            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    def testDependencies = rootProject.ext.testDependencies
+    def firebaseMessaging = '20.2.0'
+    def firebaseAuthVersion = '19.3.1'
+    def googlePlayServicesAuthVersion = '18.0.0'
+    def lottieVersion = '3.4.0'
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':di')
+    implementation project(':data')
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Jet Pack
+    implementation appDependencies.appCompat
+    implementation appDependencies.androidxKtx
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.recyclerView
+    implementation appDependencies.viewPager2
+    implementation appDependencies.lifecycleViewModel
+    implementation appDependencies.lifecycleLiveData
+    implementation appDependencies.cardView
+    implementation appDependencies.lifecycleViewModel
+    implementation appDependencies.lifecycleLiveData
+    implementation appDependencies.swipeRefreshLayout
+    implementation appDependencies.googleGson
+
+    //Material
+    implementation appDependencies.material
+    // debugging
+    implementation appDependencies.timber
+    // picasso
+    implementation appDependencies.picasso
+    // Koin
+    implementation appDependencies.koinAndroid
+    implementation appDependencies.koinLifeCycleScope
+    implementation appDependencies.koinAndroidViewModel
+
+    implementation appDependencies.zoomRecylerLayout
+    implementation appDependencies.recyclerViewAnimation
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    // firebase
+    implementation "com.google.android.gms:play-services-auth:$googlePlayServicesAuthVersion"
+    implementation "com.google.firebase:firebase-auth:$firebaseAuthVersion"
+    implementation "com.google.firebase:firebase-messaging:$firebaseMessaging"
+
+    // lottie animation
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    // implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // testing
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    androidTestImplementation testDependencies.espressoCore
+    androidTestImplementation testDependencies.runner
+    testImplementation testDependencies.junit
+
+
+}

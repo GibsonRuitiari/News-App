@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data/>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+    android:layout_height="match_parent">
+        <RelativeLayout android:layout_width="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                android:id="@+id/politicsRv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                android:id="@+id/musicRv"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/politicsRv"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/techRv"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/musicRv"/>
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+
+                android:id="@+id/loadingLayout">
+                <ProgressBar android:layout_width="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:id="@+id/progress"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:indeterminateTint="@android:color/black"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:id="@+id/error_message"/>
+            </RelativeLayout>
+        </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>

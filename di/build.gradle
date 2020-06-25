@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':data')
+
+    implementation appDependencies.koinAndroid
+}
